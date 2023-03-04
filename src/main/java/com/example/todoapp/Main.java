@@ -37,4 +37,20 @@ public class Main extends Application {
             System.out.println(e.getMessage());
         }
     }
+
+    @Override
+    public void init() throws Exception {
+        try
+        {
+            ToDoData.getInstance().loadToDoItems();
+        }
+        catch (IOException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
 }
