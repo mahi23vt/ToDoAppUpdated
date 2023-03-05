@@ -14,6 +14,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainWindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 500);
         stage.setTitle("To Do List");
+        
         stage.setScene(scene);
         stage.show();
     }
