@@ -1,7 +1,10 @@
 package com.example.todoapp.dataModel;
 
+import com.example.todoapp.dataModel.AuditLog.AuditLogData;
+import com.example.todoapp.dataModel.AuditLog.AuditLogItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.DatePicker;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,6 +20,9 @@ public class ToDoData {
     private static ToDoData instance = new ToDoData();
     private static String fileName = "toDoItemsList.txt";
     private ObservableList<ToDoItem> toDoItems;
+    private DatePicker datePicker;
+    AuditLogData logData = new AuditLogData();
+
     private DateTimeFormatter formatter;
     public static ToDoData getInstance()
     {
@@ -80,8 +86,14 @@ public class ToDoData {
     public void addToDoItem(ToDoItem item)
     {
         toDoItems.add(item);
+        LocalDate todayDate = datePicker.getValue();
+        AuditLogItem auditLogItem = new AuditLogItem(todayDate,"\tAdded the Item: "+item.getDetails());
+        logData.addAuditLogItem(auditLogItem);
     }
     public void deleteTodoItem(ToDoItem item) {
         toDoItems.remove(item);
+        LocalDate todayDate = datePicker.getValue();
+        AuditLogItem auditLogItem = new AuditLogItem(todayDate,"\tDeleted the Item: "+item.getDetails());
+        logData.addAuditLogItem(auditLogItem);
     }
 }

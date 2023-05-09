@@ -95,7 +95,7 @@ public class Controller {
         todoListView.setItems(sortedList);
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
-        // Cell Factory
+        // Cell Factory for putting more text on the cell
         todoListView.setCellFactory(new Callback<ListView, ListCell>() {
             @Override
             public ListCell call(ListView listView) {
